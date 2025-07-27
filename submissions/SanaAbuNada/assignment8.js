@@ -12,23 +12,25 @@ const editor = {
 const getTitle = editor.getUpperTitle.bind(editor);
 console.log(getTitle());
 
+
+
 // Task2
+
 
 const formHandler = {
     value: 'initial',
-    onChange :(newValue)  => {
-    formHandler.value = newValue;
-}
+    onChange(newValue) {
+    this.value = newValue;
+    }
 };
 
 function simulateInputChange(callback) {
     callback('updated');
 }
 
-simulateInputChange(formHandler.onChange.bind());
-
-// ❓ Now log formHandler.value
+simulateInputChange((newValue) => formHandler.onChange(newValue));
 console.log(formHandler.value);
+
 
 /*
 1.Predict what formHandler.value will be.
@@ -37,10 +39,8 @@ console.log(formHandler.value);
     so this.value = newValue doesn't update formHandler.value.
 
     To fix the bug, I used an arrow function.
-    I did not use this inside the method, because in arrow functions this doesn't refer to the object itself.
-    So instead, I directly updated the object using formHandler.value = newValue.
+    I did not use this inside the method
     This way, I avoid any issues with 'this' becoming undefined or return any error
-
 */
 
 
