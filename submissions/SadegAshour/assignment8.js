@@ -33,7 +33,7 @@ simulateInputChange(formHandler.onChange.bind(formHandler));
 
 // or using an arrow function
 // as i exppect the arrow function keep the context of the formHandler object 
-simulateInputChange(() => formHandler.onChange("updated"));
+simulateInputChange((value) => formHandler.onChange(value));
 
 
 // Now log formHandler.value again
