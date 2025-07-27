@@ -6,8 +6,8 @@ const editor = {
   }
 };
 
-const getTitle = editor.getUpperTitle();
-console.log(getTitle);
+const getTitle = editor.getUpperTitle.bind(editor);
+console.log(getTitle());
 
 // Write code that ensures getTitle() works as expected and logs "MY FIRST BLOG"
 
@@ -44,7 +44,7 @@ const translator = {
 };
 
 function logLanguageInfo(getter) {
-  console.log(getter())
+  console.log(getter.call(translator))
 }
 
-logLanguageInfo(() => translator.getLanguage());
+logLanguageInfo(translator.getLanguage);
