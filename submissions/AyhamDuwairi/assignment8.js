@@ -47,10 +47,11 @@ const translator = {
   },
 };
 
-function logLanguageInfo(getter) {
-  console.log(getter.call(translator));
-}
+// because u ask me to use arrow function, because we don't want to lose the context of this,
+// so we can use arrow function to handle this case
+const logLanguageInfo = (callback) => {
+  console.log(callback);
+};
 
-// here we cant just pass getLanguage directly and expect it to work
-// because its called inside another function, the this context will be lost
-// so we use call to invoke the method with translator as the context
+// we can pass the method, but we need to make sure that reference to this in the object
+logLanguageInfo(translator.getLanguage());
