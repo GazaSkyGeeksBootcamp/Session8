@@ -30,10 +30,17 @@ console.log(formHandler.value); // "initial"
 
 // Fix the bug using either .bind() or an arrow function (your choice).
 simulateInputChange(formHandler.onChange.bind(formHandler));
+
+// or using an arrow function
+// as i exppect the arrow function keep the context of the formHandler object 
+simulateInputChange(() => formHandler.onChange("updated"));
+
+
 // Now log formHandler.value again
 console.log(formHandler.value); // "updated"
 // i use the bind method cause lost binding and choose it specifically cause we assign callback as a reference to the function
 
+// Task 3
 const translator = {
   language: 'Arabic',
   getLanguage() {
