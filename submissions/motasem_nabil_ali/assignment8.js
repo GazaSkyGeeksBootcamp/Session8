@@ -21,7 +21,7 @@ function simulateInputChange(callback) {
   callback("updated");
 }
 
-simulateInputChange(formHandler.onChange.bind(formHandler));
+simulateInputChange((newValue) => formHandler.onChange(newValue));
 
 // ❓ Now log formHandler.value
 console.log(formHandler.value);
