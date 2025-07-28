@@ -22,7 +22,8 @@ function simulateInputChange(callback) {
   callback("updated");
 }
 
-simulateInputChange(formHandler.onChange.bind(formHandler));
+// simulateInputChange(formHandler.onChange.bind(formHandler));
+simulateInputChange((value) => formHandler.onChange(value));
 
 // ❓ Now log formHandler.value
 console.log(formHandler.value);
@@ -43,7 +44,7 @@ const translator = {
 
 // ❓ Write a function logLanguageInfo(getter) that logs the language info correctly even if getLanguage is passed as an argument.
 function logLanguageInfo(getter) {
-  console.log(getter());
+  console.log(getter.call(translator));
 }
 
-logLanguageInfo(translator.getLanguage.bind(translator));
+logLanguageInfo(translator.getLanguage);
