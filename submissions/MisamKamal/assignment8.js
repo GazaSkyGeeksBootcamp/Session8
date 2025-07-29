@@ -8,8 +8,6 @@ const editor = {
 };
 const getTitle = editor.getUpperTitle.bind(editor);
 console.log(getTitle());
-// Write code that ensures getTitle() works as expected and logs "MY FIRST BLOG"
-// Your Task: Fix the code so that getTitle() returns "MY FIRST BLOG". Do not modify the editor object.
 
 // ************************************************************************************************************************************
 // Task 2: Arrow or Regular?
