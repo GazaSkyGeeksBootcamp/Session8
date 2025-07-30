@@ -37,7 +37,8 @@ simulateInputChange(formHandler.onChange.bind(formHandler));
 //Explain which fix you used and why.
 
 // i used .bind() to make (this) points to formHandler cuz  when (on change)passed it lost where it should point (formHandler)
-
+simulateInputChange((newVal) => formHandler.onChange(newVal));
+// I used  arrow  function because it use (this) from the outer scope (inside onChange) because it does not have it own scope
 
 //Task 3: Method Extraction Issue
 
