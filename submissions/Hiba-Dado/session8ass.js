@@ -34,6 +34,10 @@ console.log(formHandler.value);
 simulateInputChange(formHandler.onChange.bind(formHandler));
 console.log(formHandler.value);
 
+// another sol. using an arrow function
+simulateInputChange((val) => formHandler.onChange(val));
+//arrow function doesn't create its own 'this', keeps 'this' from formHandler, so onChange still works correctly.
+
 // 3. Explain which fix you used and why.
 // I used .bind(formHandler) to keep the correct this context. When the method is passed as a callback, it loses its original this, so bind makes sure it still refers to formHandler. I used this fix because it's a simple and reliable way to control this in callbacks.
 
