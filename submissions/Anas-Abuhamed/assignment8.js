@@ -13,13 +13,11 @@ const formHandler = {
     onChange(newValue) {
         this.value = newValue;
     },
-    // onChange: (newValue) => {
-    //     formHandler.value = newValue;
-    // } // this is the way where arrow function work, we can't use this keyword in it, because it's doesn't take arrow function as block
 };
 function simulateInputChange(callback) {
     callback("updated")
 }
+simulateInputChange((value) => formHandler.onChange(value));
 simulateInputChange(formHandler.onChange.bind(formHandler)) // for this solution, bind create a new copy of the function and replace this with formhandler
 console.log(formHandler.value) // It will print initial because of bind lose (this lose it's reference)
 
