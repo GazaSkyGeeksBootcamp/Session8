@@ -1,5 +1,6 @@
 //-------------------------------------------------
 // Task 1: Fix the Lost Context
+// You’re building a blog editor. The editor object has a method to return the title in uppercase.
 //-------------------------------------------------
 const editor = {
   title: 'my first blog',
@@ -31,9 +32,26 @@ console.log("Task 2:", formHandler.value); // Output: "updated"
 
 //  fix using arrow function
 
-// simulateInputChange((value) => formHandler.onChange(value));
-// console.log(formHandler.value); //  "updated"
+simulateInputChange((value) => formHandler.onChange(value));
+console.log(formHandler.value); //  "updated"
 
+
+
+/*
+ Explanation:
+
+- In 1, we use .bind() to ensure the 'this' inside formHandler.onChange
+  refers correctly to the formHandler object.
+
+- In 2, instead of modifying the object to use an arrow function,
+  we pass an arrow function directly as the callback.
+  This avoids any changes to the original object structure.
+
+  We should NOT define an arrow method like:
+   onChangeArrow: (newValue) => { this.value = newValue }
+   because arrow functions don't bind their own 'this', and using 'this' inside them
+   when defined in an object leads to incorrect behavior.
+*/
 
 
 //-------------------------------------------------
