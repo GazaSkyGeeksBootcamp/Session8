@@ -25,8 +25,36 @@ function simulateInputChange(callback) {
 
 simulateInputChange(formHandler.onChange);
 
-console.log(formHandler.value); //
-"updated"
+// اذا مررنا الدالة مباشرة سيتم فقدان this
+simulateInputChange(formHandler.onChange);
+console.log("Without fix:", formHandler.value); 
+// "initial"
+
+// Using bind()
+const formHandler1 = {
+  value: "initial",
+  onChange(newValue) {
+    this.value = newValue;
+  },
+};
+
+simulateInputChange(formHandler1.onChange.bind(formHandler1));
+console.log("Using bind():", formHandler1.value); 
+// "updated"
+
+
+// Using Arrow Function
+const formHandler2 = {
+  value: "initial",
+  onChange(newValue) {
+    this.value = newValue;
+  },
+};
+
+simulateInputChange((val) => formHandler2.onChange(val));
+console.log("Using Arrow Function:", formHandler2.value); 
+// "updated"
+
 
 // Task 3
 const translator = {
