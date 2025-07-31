@@ -39,7 +39,23 @@ console.log(formHandler.value)  // now it's "updated"
 // That way, when the function is executed, it actually updates the value property within formHandler.
 // This solution is simple and clear because it doesn't change the structure of the function—just binds it to the correct object.
 
+// *********
+// Using Arrow function :-
+const formHandler2 = {
+  value: 'initial',
+  onChange: (newValue) => {
+    formHandler2.value = newValue;
+  }
+};
+function simulateInputChange(callback) {
+  callback('updated');
+}
 
+simulateInputChange(formHandler2.onChange);
+
+console.log(formHandler2.value);
+// 3.Explain which fix you used and why.
+// Here I used an arrow function cuz it doesn’t have its own "this", so it keeps the correct context when used as a callback.
 
 // ____________________________________________________________________________
 
