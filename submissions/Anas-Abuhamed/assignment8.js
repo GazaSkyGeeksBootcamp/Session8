@@ -1,9 +1,9 @@
 // Task 1
 const editor = {
     title: "my first blog",
-     getUpperTitle() {
+    getUpperTitle() {
         return this.title.toUpperCase();
-     }
+    }
 }
 const getTitle = editor.getUpperTitle.bind(editor);
 console.log(getTitle());
@@ -13,8 +13,11 @@ const formHandler = {
     onChange(newValue) {
         this.value = newValue;
     },
+    // onChange: (newValue) => {
+    //     formHandler.value = newValue;
+    // } // this is the way where arrow function work, we can't use this keyword in it, because it's doesn't take arrow function as block
 };
-function simulateInputChange(callback) { 
+function simulateInputChange(callback) {
     callback("updated")
 }
 simulateInputChange(formHandler.onChange.bind(formHandler)) // for this solution, bind create a new copy of the function and replace this with formhandler
@@ -22,10 +25,10 @@ console.log(formHandler.value) // It will print initial because of bind lose (th
 
 // Task 3
 const translator = {
-  language: 'Arabic',
-  getLanguage() {
-    return `Current language: ${this.language}`;
-  }
+    language: 'Arabic',
+    getLanguage() {
+        return `Current language: ${this.language}`;
+    }
 };
 
 // ❓ Write a function logLanguageInfo(getter) that logs the language info correctly even if getLanguage is passed as an argument.
