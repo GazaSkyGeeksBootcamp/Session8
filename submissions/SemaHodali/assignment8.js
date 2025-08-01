@@ -52,6 +52,7 @@ function logLanguageInfo(getter)
 console.log(getter.call(translator))//call will invoke the function
 }
 
+
 logLanguageInfo(translator.getLanguage);
 
 
