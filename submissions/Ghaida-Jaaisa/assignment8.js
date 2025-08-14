@@ -36,8 +36,10 @@ const translator = {
     return `Current language: ${this.language}`;
   }
 };
+
 function logLanguageInfo(getter) {
-  const boundGetter = getter.bind(translator);
-  console.log(boundGetter());
+  console.log(getter.call(translator));
 }
-logLanguageInfo(translator.getLanguage); 
+
+logLanguageInfo(translator.getLanguage);
+
