@@ -19,7 +19,15 @@ function simulateInputChange(callback) {
   callback('updated');
 }
 simulateInputChange(formHandler.onChange.bind(formHandler));
-console.log(formHandler.value);
+// Why do we need to bind here?
+// We need to bind here to ensure that 'this' inside onChange refers to formHandler,
+console.log(formHandler.value); // Excpected output: 'updated'
+
+/*
+another solution 
+use arrow function
+simulateInputChange((value) => formHandler.onChange(value));
+*/
 
 // Task 3
 const translator = {
