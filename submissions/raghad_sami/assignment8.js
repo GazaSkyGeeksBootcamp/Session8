@@ -43,15 +43,15 @@ console.log(formHandler.value)  // now it's "updated"
 // Using Arrow function :-
 const formHandler2 = {
   value: 'initial',
-  onChange: (newValue) => {
-    formHandler2.value = newValue;
+  onChange(newValue) {
+    this.value = newValue;
   }
 };
 function simulateInputChange(callback) {
   callback('updated');
 }
 
-simulateInputChange(formHandler2.onChange);
+simulateInputChange((newValue) => formHandler2.onChange(newValue));
 
 console.log(formHandler2.value);
 // 3.Explain which fix you used and why.
