@@ -1,23 +1,23 @@
 // Task 1
 const editor = {
-  title: 'my first blog',
+  title: "my first blog",
   getUpperTitle() {
     return this.title.toUpperCase();
-  }
+  },
 };
 const getTitle = editor.getUpperTitle.bind(editor);
-console.log(getTitle()); 
+console.log(getTitle());
 
 // Task 2
 const formHandler = {
-  value: 'initial',
+  value: "initial",
   onChange(newValue) {
     this.value = newValue;
-  }
+  },
 };
-function simulateInputChange(callback) {
-  callback('updated');
-}
+const simulateInputChange = (callback) => {
+  callback("updated");
+};
 simulateInputChange(formHandler.onChange.bind(formHandler));
 // Why do we need to bind here?
 // We need to bind here to ensure that 'this' inside onChange refers to formHandler,
@@ -31,15 +31,13 @@ simulateInputChange((value) => formHandler.onChange(value));
 
 // Task 3
 const translator = {
-  language: 'Arabic',
-  getLanguage() {
-    return `Current language: ${this.language}`;
-  }
+  language: "Arabic",
+  getLanguage: () => `Current language: ${translator.language}`,
 };
 
 function logLanguageInfo(getter) {
   console.log(getter.call(translator));
+  // Using call to ensure 'this' refers to translator
 }
 
 logLanguageInfo(translator.getLanguage);
-
