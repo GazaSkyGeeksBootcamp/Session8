@@ -46,8 +46,9 @@ console.log(formHandler.value);
 
 //2-fix the bug using either .bind() or an arrow function (your choice).
 
-simulateInputChange(formHandler.onChange.bind(formHandler));
-console.log(formHandler.value); 
+simulateInputChange((e) => formHandler.onChange(e));
+console.log(formHandler.value);
+
 
 //3-explain which fix you used and why.
 // استخدمت bind
@@ -65,11 +66,10 @@ const translator = {
 
 // ❓ Write a function logLanguageInfo(getter) that logs the language info correctly even if getLanguage is passed as an argument.
 
-//using bind again
 function logLanguageInfo(getter) {
-  const get = getter.bind(translator);
-  console.log(get());
+  console.log(getter.call(translator));
 }
+
 
 
 logLanguageInfo(translator.getLanguage);
