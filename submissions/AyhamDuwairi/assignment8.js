@@ -33,9 +33,8 @@ function simulateInputChange(callback) {
 // because we are passing it as a callback, this gets lost
 // so we need to bind it first to make sure this refers to formHandler
 const boundOnChange = formHandler.onChange.bind(formHandler);
-simulateInputChange(boundOnChange);
-console.log(formHandler.value); // updated
-
+console.log(formHandler.value);
+simulateInputChange((newValue) => formHandler.onChange(newValue));
 // we use bind here to ensure this inside onChange still points to formHandler
 // this way, the value gets updated correctly
 
@@ -49,9 +48,7 @@ const translator = {
 
 // because u ask me to use arrow function, because we don't want to lose the context of this,
 // so we can use arrow function to handle this case
-const logLanguageInfo = (callback) => {
-  console.log(callback);
-};
-
-// we can pass the method, but we need to make sure that reference to this in the object
-logLanguageInfo(translator.getLanguage());
+function logLanguageInfo(getter) {
+  console.log(getter.call(translator));
+}
+logLanguageInfo(translator.getLanguage); // Current language: Arabic
