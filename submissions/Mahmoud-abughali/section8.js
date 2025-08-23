@@ -37,7 +37,11 @@ simulateInputChange(formHandler.onChange.bind(formHandler));
 console.log(formHandler.value)
 // 3. Explain which fix you used and why.
 // i've used bind() to ensure the 'this' inside formHandler.onChange refers correctly to the formHandler object
-
+// using the arrow function
+simulateInputChange((newValue) => {
+  formHandler.value = newValue;
+})
+// the arrow function directly refers to formHandler
 
 // Task3
 
